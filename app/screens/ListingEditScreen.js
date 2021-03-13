@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native'
 
-import * as Yup from 'yup'
-import Screen from '../components/Screen';
-import { Form, FormFeed, SubmitButon, FormPicker } from '../components/Forms';
 import CatogoryItem from '../components/CatogoryItem';
 import colors from './../config/colors'
+import ImageFormFeed from '../components/Forms/ImageFormFeed';
+import Screen from '../components/Screen';
+import { Form, FormFeed, SubmitButon, FormPicker } from '../components/Forms';
+import * as Yup from 'yup'
+import useLocation from '../hooks/useLocation';
 
 
 const validationSchema = Yup.object().shape({
+    images: Yup.array().min(1, "Please Select at Least one Image !"),
     title: Yup.string().required().min(1).label('Title'),
     prize: Yup.string().required().min(1).max(10000).label('Prize'),
     catagories: Yup.string().required().label('Catagories'),
@@ -16,9 +19,7 @@ const validationSchema = Yup.object().shape({
 })
 
 
-function RegisterScreen(props) {
-    const [catagory, setCategory] = useState('')
-
+function ListingEditScreen(props) {
     const catagories = [{
         label: 'Furniture',
         icon: 'floor-lamp',
@@ -75,14 +76,17 @@ function RegisterScreen(props) {
     }
     ]
 
+    const location = useLocation()
 
     return (
         <Screen style={styles.container}>
             <Form
-                initialValues={{ title: '', prize: '', catagories: '', description: '' }}
+                initialValues={{ images: [], title: '', prize: '', catagories: '', description: '' }}
                 validationSchema={validationSchema}
-                onSubmit={value => console.log(value)}
+                onSubmit={value => console.log(location)}
             >
+                <ImageFormFeed name='images' />
+
                 <FormFeed
                     name="title"
                     placeholder="Title"
@@ -119,4 +123,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default RegisterScreen;
+export default ListingEditScreen;

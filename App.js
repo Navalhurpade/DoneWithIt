@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 import AppPicker from "./app/components/AppPicker";
 
 import AppTextInput from './app/components/AppTextInput'
@@ -12,17 +12,13 @@ import MyAccountScreen from "./app/screens/MyAccountScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import WellcomeScreen from "./app/screens/WellcomeScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
+
+
 
 export default function App() {
 
   return (
-    // <LoginScreen />
-    // <MyAccountScreen />
-    // <RegisterScreen />
-    // <MessagrScreen />
-    // <HomeScreen />
-    // <ListDetailsScreen />
-    // <WellcomeScreen />
-    <ListingEditScreen />
+    < ListingEditScreen />
   );
 }

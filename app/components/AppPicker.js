@@ -43,7 +43,6 @@ function AppPicker({
                         renderItem={({ item }) => <CatogoryItem
                             item={item}
                             onPress={() => {
-                                console.log("item Clicked");
                                 onItemSelect(item.label)
                                 setModalVisible(false)
                             }}
