@@ -13,7 +13,7 @@ function AppFormPicker({ items, CatogoryItem, width, placeholder, icon, name }) 
             <AppPicker
                 items={items}
                 selectedItem={values[name]}
-                onItemSelect={handleChange(name)}
+                onItemSelect={(id) => handleChange(name)}
                 onBlur={() => setFieldTouched(name)}
                 placeholder={placeholder}
                 icon={icon}

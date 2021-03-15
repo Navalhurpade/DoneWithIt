@@ -14,7 +14,7 @@ import { postListings } from '../api/listing';
 const validationSchema = Yup.object().shape({
     images: Yup.array().min(1, "Please Select at Least one Image !"),
     title: Yup.string().required().min(1).label('Title'),
-    prize: Yup.string().required().min(1).max(10000).label('Prize'),
+    price: Yup.string().required().min(1).max(10000).label('Price'),
     catagories: Yup.string().required().label('Catagories'),
     description: Yup.string().label('Description'),
 })
@@ -85,12 +85,21 @@ function ListingEditScreen(props) {
         value: 1
     }
     ]
-
     const location = useLocation()
 
     const handlelisting = listingData => {
+        // const listing = new Listing({
+//     categoryId: data.categoryId,
+//     userId: req.user.userId,
+//     location: data.location
+// });
+
         console.log(listingData);
-        // postListings()
+
+        // const data = {
+        //     ...listingData,
+            
+        // }
     }
 
     return (
