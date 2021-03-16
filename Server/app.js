@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const socketIO = require("socket.io");
 const { Server } = require("http");
+const cors = require('cors')
 const auth = require('./routes/auth');
 const listings = require('./routes/listings');
 const expoToken = require("./routes/expoPushToken");
@@ -13,6 +14,7 @@ const sendNotification = require("./util/pushNotification");
 const tokenVerify = require("./util/tokenVerify");
 
 const app = express();
+app.use(cors())
 const server = Server(app);
 const io = socketIO(server);
 const port = process.env.PORT || 9000;
@@ -227,4 +229,6 @@ app.use('/listings', listings);
 app.use('/expo-push-token', expoToken);
 app.use('/upload', upload);
 
-server.listen(port, '192.168.2.228', () => console.log(`App is listening on port ${port}`));
+server.listen(port, '192.168.2.228',() => console.log(`App is listening on port ${port}`));
+
+// '192.168.2.228',

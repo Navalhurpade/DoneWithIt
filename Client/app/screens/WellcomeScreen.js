@@ -1,9 +1,10 @@
 import React from 'react';
 import { ImageBackground, Image, StyleSheet, View, Text } from 'react-native';
 import AppButton from '../components/AppButton';
+import routes from '../navigation/routes';
 
 function WellcomeScreen({ navigation }) {
-
+  const { LOGIN_SCREEN, REGISTER_SCREEN } = routes
     return (
         <ImageBackground
             style={styles.background_img}
@@ -15,8 +16,8 @@ function WellcomeScreen({ navigation }) {
                 <Text style={styles.tagLine} >Sell what you done with </Text>
             </View>
             <View style={styles.btn_container} >
-                <AppButton title="Login" onPress={() => navigation.navigate("LoginScreen")} backgroundColor='secondary' />
-                <AppButton title="Register" onPress={() => navigation.navigate("RegisterScreen")} />
+                <AppButton title="Login" onPress={() => navigation.navigate(LOGIN_SCREEN)} backgroundColor='secondary' />
+                <AppButton title="Register" onPress={() => navigation.navigate(REGISTER_SCREEN)} />
             </View>
 
         </ImageBackground>

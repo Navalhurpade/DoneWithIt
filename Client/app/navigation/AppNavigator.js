@@ -15,7 +15,7 @@ const AppNavigator = () => {
     const { FEED_SCREEN, LISTING_EDIT_SCREEN, ACCOUNT_SCREEN } = routes
 
     return (
-        <Tab.Navigator initialRouteName={LISTING_EDIT_SCREEN} style={{}} >
+        <Tab.Navigator style={{}} >
             <Tab.Screen
                 options={{
                     tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='home' size={size} color={color} />

@@ -10,6 +10,8 @@ module.exports = (req, res, next) => {
         const payload = jwt.verify(token, process.env.SECRET);
         req.user = payload;
         next();
+        console.log("\n");
+        console.log("Login Sucsess !");
     } catch (err) {
         res.status(400).send({ error: "Invalid token." });
     }

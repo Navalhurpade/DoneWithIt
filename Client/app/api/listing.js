@@ -1,12 +1,13 @@
-import http from "./httpsService"
+import http from "./httpsService";
+
+const endpoint = "/listings";
 
 const getListings = async () => {
-        await http.get("/listings").then((res)=>{
-            console.log("Sucessfully got the data !");
-            console.log(res);
-            return res.data
-        }).catch(error => console.log("Error Connecting Server"))
-}
+  const res = await http.get(endpoint);
+  console.log("Sucessfully got the Listings data !");
+  if (!res.ok) console.log("Error Geting the data !");
+  return res.data;
+};
 
 // const listing = new Listing({
 //     title: data.title,
@@ -18,19 +19,16 @@ const getListings = async () => {
 //     location: data.location
 // });
 
-
-
 const postListings = async (listing) => {
-    try {
-        await http.post("/listings",listing) 
-        console.log("Sucessfuly posted Data !");  
-    } catch (error) {
-        console.log("Error while posting Listing",error)
-    }
-}
+  const res = await http
+    .post("http://192.168.2.228:9000/listings", listing)
+    .catch((error) => console.log(error));
+  if (!res.ok) {
+    console.log("Error while posting Listing");
+    return;
+  } else {
+    console.log("Sucessfuly posted Data !");
+  }
+};
 
-
-export  {
-    getListings,
-    postListings
-}
+export { getListings, postListings };

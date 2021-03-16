@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const data = req.body;
 
     const images = await Promise.all(data.images.map(async url => {
