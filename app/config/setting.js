@@ -3,12 +3,15 @@ import Constants from "expo-constants";
 const settings = {
   dev: {
     apiUrl: "http://192.168.87.228:9000/api",
+    useBugsnag: false,
   },
   staging: {
     apiUrl: "https://done-with-it-backend-naval.herokuapp.com/api",
+    useBugsnag: true,
   },
   prod: {
     apiUrl: "https://done-with-it-backend-naval.herokuapp.com/api",
+    useBugsnag: true,
   },
 };
 

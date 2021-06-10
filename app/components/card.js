@@ -21,7 +21,6 @@ function card({
   owner,
   description,
   date,
-  onPress,
 }) {
   let src = getReadableImgSrc(
     images[0].fullImg.imgBuffer.data,
@@ -30,23 +29,24 @@ function card({
 
   const listingAge = getDiffernce(date);
 
+  const navigate = () => {
+    const parrams = {
+      data: {
+        title,
+        price,
+        imageUri: src,
+        listingId,
+        location,
+        owner,
+        description,
+      },
+    };
+
+    rootNavigation.navigate(routes.LISTING_DETAILS_SCREEN, parrams);
+  };
+
   return (
-    <TouchableWithoutFeedback
-      onPress={() =>
-        rootNavigation.navigate(routes.LISTING_DETAILS_SCREEN, {
-          data: {
-            title,
-            price,
-            imageUri: src,
-            listingId,
-            location,
-            owner,
-            description,
-          },
-        })
-      }
-      key={listingId}
-    >
+    <TouchableWithoutFeedback onPress={navigate} key={listingId}>
       <View style={styles.card}>
         <Image style={styles.image} source={{ uri: src }} />
 

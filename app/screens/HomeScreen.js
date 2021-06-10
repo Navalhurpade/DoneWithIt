@@ -11,6 +11,7 @@ import { getMyListings } from "../api/myListings";
 import CategoryList from "../components/CategoryList";
 import Color from "../config/colors";
 import routes from "../navigation/routes";
+import { getReadableImgSrc } from "../api/utils";
 
 function HomeScreen({ route, navigation }) {
   const [selectedCategory, setSelectedCategory] = useState([0]);
@@ -29,6 +30,25 @@ function HomeScreen({ route, navigation }) {
     if (selectedCategory != 0 && listings.filter != undefined)
       return listings?.filter((l) => l.categoryId === selectedCategory);
     else return listings;
+  };
+
+  const navigateToDetails = (listingId) => {
+    const listingDitails = listings.filter((l) => l._id === listingId)[0];
+
+    const src = getReadableImgSrc(listingDitails.images[0].data);
+    const parrams = {
+      data: {
+        title: listingDitails.title,
+        price: listingDitails.price,
+        imageUri: src,
+        listingId: listingDitails.listingId,
+        location: listingDitails.location,
+        owner: listingDitails.userId,
+        description: listingDitails.description,
+      },
+    };
+
+    navigation.navigate(routes.LISTING_DETAILS_SCREEN, parrams);
   };
 
   useEffect(() => {
@@ -50,7 +70,7 @@ function HomeScreen({ route, navigation }) {
           onSelect={(c) => setSelectedCategory(c)}
         />
 
-        {(listings != undefined || listings.length == 0) && !isLoding && (
+        {(listings == undefined || listings.length == 0) && !isLoding && (
           <Apptext style={styles.emptyWarning}>No Listings found !</Apptext>
         )}
         <FlatList

@@ -11,11 +11,9 @@ import { ErrorMessage, Form, FormFeed, SubmitButon } from "../components/Forms";
 import * as authApi from "../api/auth/authApi";
 
 import * as Yup from "yup";
-import Screen from "../components/Screen";
 import useAuth from "../hooks/useAuth";
 import LodingAnimation from "../components/LodingAnimation";
 import Apptext from "../components/AppText";
-import Color from "../config/colors";
 import FormGenderSelector from "../components/Forms/FormGenderSelector";
 
 const validationSchema = Yup.object().shape({

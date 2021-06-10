@@ -9,7 +9,7 @@ import Color from "../config/colors";
 function OwnerInfo({ owner }) {
   return (
     <View style={styles.container}>
-      <Image style={styles.icon} source={owner.gender ? female : male} />
+      <Image style={styles.icon} source={owner?.gender ? female : male} />
       <View style={styles.textContainer}>
         <Apptext style={styles.name}>{owner.name}</Apptext>
         <Apptext style={styles.subTitle}>{owner.listings} Listings</Apptext>

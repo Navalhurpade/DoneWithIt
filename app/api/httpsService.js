@@ -4,8 +4,8 @@ import cacheStorage from "./../cache/cache";
 import settings from "./../config/setting";
 
 const api = create({
-  // baseURL: settings.apiUrl,
-  baseURL: "https://done-with-it-backend-naval.herokuapp.com/api",
+  baseURL: settings.apiUrl,
+  // baseURL: "https://done-with-it-backend-naval.herokuapp.com/api",
 });
 
 const get = api.get;

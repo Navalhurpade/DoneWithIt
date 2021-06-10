@@ -3,10 +3,11 @@ import * as Location from "expo-location";
 
 const useLocation = () => {
   const [location, setLocation] = useState();
+  let mounted = true;
 
   const getLocation = async () => {
     try {
-      const { granted } = await Location.requestPermissionsAsync();
+      const { granted } = await Location.requestForegroundPermissionsAsync();
       if (!granted) return;
       const {
         coords: { longitude, latitude },
@@ -22,7 +23,11 @@ const useLocation = () => {
     }
   };
   useEffect(() => {
-    getLocation();
+    if (mounted) getLocation();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return location;

@@ -11,12 +11,15 @@ import AppLoading from "expo-app-loading";
 import { isUserLogedin } from "./app/api/auth/authApi";
 import rootNavigation from "./app/navigation/rootNavigation";
 import logger from "./app/utils/loger";
+import setting from "./app/config/setting";
 
 const Roboto = require("./app/assets/fonts/SignikaNegative-Regular.ttf");
 
 //Starting Bugsnag
-// logger.start();
-// console.log = logger.log;
+if (setting.useBugsnag) {
+  logger.start();
+  console.log = logger.log;
+}
 
 export default function App() {
   const [user, setUser] = useState();
