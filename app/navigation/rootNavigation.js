@@ -1,9 +1,9 @@
 import React from "react";
 
-const navigationRef = React.createRef();
+let navigationRef = React.createRef();
 
 const navigate = (name, parrams) => {
-  navigationRef.current.navigate(name, parrams);
+  navigationRef.current?.navigate(name, parrams);
 };
 
 export default {

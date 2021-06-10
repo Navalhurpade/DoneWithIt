@@ -15,8 +15,8 @@ import logger from "./app/utils/loger";
 const Roboto = require("./app/assets/fonts/SignikaNegative-Regular.ttf");
 
 //Starting Bugsnag
-logger.start();
-console.log = logger.log;
+// logger.start();
+// console.log = logger.log;
 
 export default function App() {
   const [user, setUser] = useState();

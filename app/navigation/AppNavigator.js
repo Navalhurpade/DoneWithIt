@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -10,14 +10,14 @@ import NewListingButton from "./newListingButton";
 import routes from "./routes";
 import useNotification from "./../hooks/useNotification";
 import rootNavigation from "./rootNavigation";
-import { TouchableOpacity } from "react-native-gesture-handler";
+// import { useNavigation } from "@react-navigation/core";
 
 const AppNavigator = () => {
   const Tab = createBottomTabNavigator();
   const [option, setOption] = useState();
   const navigation = rootNavigation;
+  // const navigation = useNavigation();
   const { FEED_SCREEN, LISTING_EDIT_SCREEN, ACCOUNT_SCREEN } = routes;
-
   useNotification();
 
   return (
